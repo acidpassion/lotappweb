@@ -9,6 +9,13 @@ var morgan     = require('morgan');
 
 // configure app
 app.use(morgan('dev')); // log requests to the console
+app.use(function (req, res, next) {
+    'use strict';
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    next();
+});
 
 // configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,8 +24,8 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080; // set our port
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://node:node@novus.modulusmongo.net:27017/Iganiq8o'); // connect to our database
-var Bear     = require('./app/models/bear');
+mongoose.connect('mongodb://localhost:27017/lotapp'); // connect to our database
+var Filter     = require('./app/models/filter');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -38,78 +45,118 @@ router.get('/', function(req, res) {
 	res.json({ message: 'hooray! welcome to our api!' });	
 });
 
-// on routes that end in /bears
+// on routes that end in /filters
 // ----------------------------------------------------
-router.route('/bears')
+router.route('/filters')
 
-	// create a bear (accessed at POST http://localhost:8080/bears)
+	// create a filter (accessed at POST http://localhost:8080/filters)
 	.post(function(req, res) {
 		
-		var bear = new Bear();		// create a new instance of the Bear model
-		bear.name = req.body.name;  // set the bears name (comes from the request)
-
-		bear.save(function(err) {
+		var filter = new Filter();		// create a new instance of the Filter model
+		filter.name = req.body.name;  // set the filters name (comes from the request)
+        filter.age = req.body.age;
+        filter.startHostFrom = req.body.startHostFrom;
+        filter.startHostTo = req.body.startHostTo;
+        filter.startPanko = req.body.startPanko;
+        filter.startGuestFrom = req.body.startGuestFrom;
+        filter.startGuestTo = req.body.startGuestTo;
+        filter.nowHostFrom = req.body.nowHostFrom;
+        filter.nowHostTo = req.body.nowHostTo;
+        filter.nowPanko = req.body.nowPanko;
+        filter.nowGuestFrom = req.body.nowGuestFrom;
+        filter.nowGuestTo = req.body.nowGuestTo;
+        filter.endHostFrom = req.body.endHostFrom;
+        filter.endHostTo = req.body.endHostTo;
+        filter.endPanko = req.body.endPanko;
+        filter.endGuestFrom = req.body.endGuestFrom;
+        filter.endGuestTo = req.body.endGuestTo;
+        filter.euroAsiaHostFrom = req.body.euroAsiaHostFrom;
+        filter.euroAsiaHostTo = req.body.euroAsiaHostTo;
+        filter.euroAsiaPanko = req.body.euroAsiaPanko;
+        filter.euroAsiaGuestFrom = req.body.euroAsiaGuestFrom;
+        filter.euroAsiaGuestTo = req.body.euroAsiaGuestTo;
+		filter.save(function(err) {
 			if (err)
 				res.send(err);
 
-			res.json({ message: 'Bear created!' });
+			res.json({ message: 'Filter created!' });
 		});
 
 		
 	})
 
-	// get all the bears (accessed at GET http://localhost:8080/api/bears)
+	// get all the filters (accessed at GET http://localhost:8080/api/filters)
 	.get(function(req, res) {
-		Bear.find(function(err, bears) {
+	    var query ={}
+	    query.name = req.body.name;
+	    query.age = req.body.age;
+		Filter.find(query,function(err, filters) {
 			if (err)
 				res.send(err);
 
-			res.json(bears);
+			res.json(filters);
 		});
 	});
 
-// on routes that end in /bears/:bear_id
+// on routes that end in /filters/:filter_id
 // ----------------------------------------------------
-router.route('/bears/:bear_id')
+router.route('/filters/:filter_id')
 
-	// get the bear with that id
+	// get the filter with that id
 	.get(function(req, res) {
-		Bear.findById(req.params.bear_id, function(err, bear) {
+		Filter.findById(req.params.filter_id, function(err, filter) {
 			if (err)
 				res.send(err);
-			res.json(bear);
+			res.json(filter);
 		});
 	})
 
-	// update the bear with this id
+	// update the filter with this id
 	.put(function(req, res) {
-		Bear.findById(req.params.bear_id, function(err, bear) {
+		Filter.findById(req.params.filter_id, function(err, filter) {
 
 			if (err)
 				res.send(err);
 
-			bear.name = req.body.name;
-			bear.save(function(err) {
+			filter.name = req.body.name;
+			filter.save(function(err) {
 				if (err)
 					res.send(err);
 
-				res.json({ message: 'Bear updated!' });
+				res.json({ message: 'Filter updated!' });
 			});
 
 		});
 	})
 
-	// delete the bear with this id
+	// delete the filter with this id
 	.delete(function(req, res) {
-		Bear.remove({
-			_id: req.params.bear_id
-		}, function(err, bear) {
+		Filter.remove({
+			_id: req.params.filter_id
+		}, function(err, filter) {
 			if (err)
 				res.send(err);
 
 			res.json({ message: 'Successfully deleted' });
 		});
 	});
+
+//on routes that search filters
+router.route('/filters/search')
+    //get filters by search criteria
+	.post(function(req, res) {
+	    var query ={}
+	    query.name = req.body.name;
+	    query.age = {$gte: req.body.age};
+		Filter.find(query, function(err, filters) {
+			if (err)
+				res.send(err);
+
+			res.json(filters);
+		});
+
+
+	})
 
 
 // REGISTER OUR ROUTES -------------------------------
