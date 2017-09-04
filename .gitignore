@@ -25,4 +25,5 @@ build/Release
 node_modules
 #InteliJ project files
 .idea
+__pycache__
 

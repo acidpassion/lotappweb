@@ -211,7 +211,7 @@ start_timeTotal = datetime.datetime.now()
 total = getGames()
 end_timeTotal = datetime.datetime.now()
 
-logger.info('total time spent: ' + str(end_timeTotal - start_timeTotal) +' ' + total  + ' games imported')
+logger.info('total time spent: ' + str(end_timeTotal - start_timeTotal) +' ' + str(total)  + ' games imported')
 
 driver.close()
 
