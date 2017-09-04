@@ -14,7 +14,7 @@ import pymongo
 import datetime
 import platform
 import logging
-
+import os
 
 companyMap = {}
 
@@ -32,6 +32,10 @@ companyMap['12BET(菲律宾)'] = '12bet/大发'
 companyMap['利记sbobet(英国)'] = '利记'
 companyMap['盈禾(菲律宾)'] = '盈禾'
 companyMap['18Bet'] = '18Bet'
+
+#create logs folder if not exist
+if not os.path.exists('../logs'):
+    os.makedirs('../logs')
 
 # 第一步，创建一个logger
 logger = logging.getLogger()
