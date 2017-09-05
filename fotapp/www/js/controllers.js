@@ -1,4 +1,4 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ["starter.services"])
 
 .controller('DashCtrl', function($scope) {
 
@@ -26,6 +26,40 @@ angular.module('starter.controllers', [])
   $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('SettingsCtrl', function($scope, filters) {
-  $scope.settings = filters;
+.controller('SettingsCtrl', function($scope, $http, API_ENDPOINT,  filters, $ionicLoading) {
+  $scope.submit = function(){
+    $scope.show();
+     $http({
+          method: 'PUT',
+          url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59aacc5a1aeb20026da68700',
+          data: $scope.data,
+          headers: {'Content-Type': 'application/json'}
+      })
+      .success(function(response) {
+          // handle success things
+          $scope.hide();
+          console.log(response);
+      })
+      .error(function(data, status, headers, config) {
+          $scope.hide();
+          console.log(response);
+          // handle error things
+      })
+
+
+
+  }
+  $scope.data = filters;
+  $scope.show = function() {
+      $ionicLoading.show({
+        template: 'Loading...'
+      });
+    };
+  $scope.hide = function(){
+      $ionicLoading.hide();
+    };
+
+
+
+
 });

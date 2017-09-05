@@ -53,8 +53,6 @@ router.route('/filters')
 	.post(function(req, res) {
 		
 		var filter = new Filter();		// create a new instance of the Filter model
-		filter.name = req.body.name;  // set the filters name (comes from the request)
-        filter.age = req.body.age;
         filter.startHostFrom = req.body.startHostFrom;
         filter.startHostTo = req.body.startHostTo;
         filter.startPanko = req.body.startPanko;
@@ -112,13 +110,31 @@ router.route('/filters/:filter_id')
 	})
 
 	// update the filter with this id
+	// update the filter with this id
 	.put(function(req, res) {
-		Filter.findById(req.params.filter_id, function(err, filter) {
-
+		Filter.findById(req.body._id, function(err, filter) {
 			if (err)
 				res.send(err);
-
-			filter.name = req.body.name;
+            filter.startHostFrom = req.body.startHostFrom;
+            filter.startHostTo = req.body.startHostTo;
+            filter.startPanko = req.body.startPanko;
+            filter.startGuestFrom = req.body.startGuestFrom;
+            filter.startGuestTo = req.body.startGuestTo;
+            filter.nowHostFrom = req.body.nowHostFrom;
+            filter.nowHostTo = req.body.nowHostTo;
+            filter.nowPanko = req.body.nowPanko;
+            filter.nowGuestFrom = req.body.nowGuestFrom;
+            filter.nowGuestTo = req.body.nowGuestTo;
+            filter.endHostFrom = req.body.endHostFrom;
+            filter.endHostTo = req.body.endHostTo;
+            filter.endPanko = req.body.endPanko;
+            filter.endGuestFrom = req.body.endGuestFrom;
+            filter.endGuestTo = req.body.endGuestTo;
+            filter.euroAsiaHostFrom = req.body.euroAsiaHostFrom;
+            filter.euroAsiaHostTo = req.body.euroAsiaHostTo;
+            filter.euroAsiaPanko = req.body.euroAsiaPanko;
+            filter.euroAsiaGuestFrom = req.body.euroAsiaGuestFrom;
+            filter.euroAsiaGuestTo = req.body.euroAsiaGuestTo;
 			filter.save(function(err) {
 				if (err)
 					res.send(err);

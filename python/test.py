@@ -147,7 +147,7 @@ def getAsia(game):
 
 def getEurope(game):
     driver.get("http://op1.win007.com/exchange.aspx?id=" + game.id + "&cids=,16,18,281,1183,976,545,80,499,82,474,517,81,90,659,")
-    time.sleep(3)
+    time.sleep(4)
     # print(driver.page_source)  # 这个函数获取页面的html
     # driver.get_screenshot_as_file("1.jpg")  # 获取页面截图
     soup = BeautifulSoup(driver.page_source, "lxml", from_encoding="utf-8")
