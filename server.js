@@ -180,5 +180,12 @@ app.use('/api', router);
 
 // START THE SERVER
 // =============================================================================
-app.listen(port);
+app.listen(8080,'112.74.57.41');
+var http = require('http');
+//http.createServer(function(req,res){
+//    res.writeHead(200,{'Content-Type':'text/plain'});
+//    res.end('Hello body!');}).listen(8080,'127.0.0.1');
+//    console.log('NodeJS Server sunning at http://127.0.0.1:8080'
+//);
+
 console.log('Magic happens on port ' + port);
