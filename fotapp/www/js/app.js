@@ -24,7 +24,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .constant('API_ENDPOINT', {
-    host: 'http://112.74.57.41',
+    host: 'http://192.168.2.58',
     port: 8080,
     path: '',
     needsAuth: false
