@@ -185,7 +185,9 @@ def getGames():
     try:
         table = soup.find('table', id='table_live')
         td_th = re.compile('t[dh]')
-        date = table.findAll("tr")[0].findAll(td_th)[1].find(text=True)
+        date = str(table.findAll("tr")[0].findAll(td_th)[1].find(text=True))
+        date = date.replace("月", "-", 1)
+        date = date.replace("日", "", 1)
         rownum = 0
         count = 0
         for row in table.findAll("tr"):
@@ -198,7 +200,7 @@ def getGames():
                 if cells[3].find(text=True) == '完':
                     continue
                 start_time = datetime.datetime.now()
-                game = Game(str(datetime.datetime.now().year) + '年' + str(date), cells[1].find(text=True), cells[2].find(text=True), cells[3].find(text=True), cells[4].find(text=True), cells[6].find(text=True), cells[8].find(text=True), cells[9].find(text=True), cells[10].find(text=True), gameid)
+                game = Game(str(datetime.datetime.now().year) + '-' + str(date), cells[1].find(text=True), cells[2].find(text=True), cells[3].find(text=True), cells[4].find(text=True), cells[6].find(text=True), cells[8].find(text=True), cells[9].find(text=True), cells[10].find(text=True), gameid)
                 db.games.delete_many({"id":game.id})
                 db.games.insert(game.__dict__)
                 count += 1

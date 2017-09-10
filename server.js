@@ -162,20 +162,54 @@ router.route('/filters/:filter_id')
 //on routes that search filters
 router.route('/games/search')
     //get filters by search criteria
+
     .post(function(req, res) {
         Game.aggregate([
+    {
+      $lookup:
             {
-              $lookup:
-                {
-                  from: "asias",
-                  localField: "id",
-                  foreignField: "gameId",
-                  as: "asias"
-                }
-           },
-            {
-                $match: req.body
+              from: "asias",
+              localField: "id",
+              foreignField: "gameId",
+              as: "details"
             }
+           },
+           {
+               $unwind:"$details"
+           },
+           {
+               $match: { $and: [
+
+                                    req.body
+
+                               ]
+                       }
+           },
+
+           { $project: {
+                           "date": "$date",
+                           "type": "$type",
+                           "time": "$time",
+                            "time_elapsed": "$time_elapsed",
+                            "host":"$host",
+                            "guest":"$guest",
+                           "company": "$details.company",
+                            "panko" : "$details.panko",
+                            "startHost" : "$details.startHost",
+                            "startPanko" : "$details.startPanko",
+                            "startGuest" : "$details.startGuest",
+                            "nowHost" : "$details.nowHost",
+                            "nowPanko" : "$details.nowPanko",
+                            "nowGuest" : "$details.nowGuest",
+                            "endHost" : "$details.endHost",
+                            "endPanko" : "$details.endPanko",
+                            "endGuest" : "$details.endGuest",
+                            "euroAsiaHost" : "$details.euroAsiaHost",
+                            "euroAsiaPanko" : "$details.euroAsiaPanko",
+                            "euroAsiaGuest" : "$details.euroAsiaGuest"
+               }
+
+           }
         ], function (err, result) {
             if (err) {
                 next(err);

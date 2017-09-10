@@ -1,9 +1,22 @@
 angular.module('starter.controllers', ["starter.services"])
 
-.controller('DashCtrl', function($scope) {
-
-
-
+.controller('DashCtrl', function($scope, filterFactory ) {
+     $scope.filter ={};
+     $scope.search ={};
+     filterFactory.getFilters()
+      .then(function(data) {
+         $scope.filter = data;
+      });
+       if($scope.filter.startHostFrom != "")
+          $scope.search.append("startHost", {"$gte":$scope.search.startHostFrom})
+          $scope.temp = '';
+              jsonStr = '{ '
+                         + '"date" : '
+                         + '"' + status.id + '"'
+                         + ", "
+                         + '"optionValue" : '
+                         + '"'+ options[i].value + '"'
+                         + ' }';
 
 })
 
