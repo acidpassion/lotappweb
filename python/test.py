@@ -198,7 +198,7 @@ def getGames():
                 if cells[3].find(text=True) == '完':
                     continue
                 start_time = datetime.datetime.now()
-                game = Game(str(datetime.datetime.now().year) + '年' + str(cells[0].find(text=True)), cells[1].find(text=True), cells[2].find(text=True), cells[3].find(text=True), cells[4].find(text=True), cells[6].find(text=True), cells[8].find(text=True), cells[9].find(text=True), cells[10].find(text=True), gameid)
+                game = Game(str(datetime.datetime.now().year) + '年' + str(date), cells[1].find(text=True), cells[2].find(text=True), cells[3].find(text=True), cells[4].find(text=True), cells[6].find(text=True), cells[8].find(text=True), cells[9].find(text=True), cells[10].find(text=True), gameid)
                 db.games.delete_many({"id":game.id})
                 db.games.insert(game.__dict__)
                 count += 1
