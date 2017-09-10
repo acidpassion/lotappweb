@@ -24,8 +24,10 @@ app.use(bodyParser.json());
 var port     = process.env.PORT || 8080; // set our port
 
 var mongoose   = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/lotapp'); // connect to our database
+mongoose.connect('mongodb://112.74.57.41:27017/lotapp'); // connect to our database
 var Filter     = require('./app/models/filter');
+var Game       = require('./app/models/game');
+var Asia       = require('./app/models/asia');
 
 // ROUTES FOR OUR API
 // =============================================================================
@@ -158,21 +160,30 @@ router.route('/filters/:filter_id')
 	});
 
 //on routes that search filters
-router.route('/filters/search')
+router.route('/games/search')
     //get filters by search criteria
-	.post(function(req, res) {
-	    var query ={}
-	    query.name = req.body.name;
-	    query.age = {$gte: req.body.age};
-		Filter.find(query, function(err, filters) {
-			if (err)
-				res.send(err);
-
-			res.json(filters);
-		});
-
-
-	})
+    .post(function(req, res) {
+        Game.aggregate([
+            {
+              $lookup:
+                {
+                  from: "asias",
+                  localField: "id",
+                  foreignField: "gameId",
+                  as: "asias"
+                }
+           },
+            {
+                $match: req.body
+            }
+        ], function (err, result) {
+            if (err) {
+                next(err);
+            } else {
+                res.json(result);
+            }
+        });
+    });
 
 
 // REGISTER OUR ROUTES -------------------------------
