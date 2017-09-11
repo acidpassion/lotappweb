@@ -1,17 +1,43 @@
 <ion-view view-title="Dashboard">
   <ion-content class="padding">
-    <h2>Welcome to Ionic</h2>
-    <p>
-    This is the Ionic starter for tabs-based apps. For other starters and ready-made templates, check out the <a href="http://market.ionic.io/starters" target="_blank">Ionic Market</a>.
-    </p>
-    <p>
-      To edit the content of each tab, edit the corresponding template file in <code>www/templates/</code>. This template is <code>www/templates/tab-dash.html</code>
-    </p>
-    <p>
-    If you need help with your app, join the Ionic Community on the <a href="http://forum.ionicframework.com" target="_blank">Ionic Forum</a>. Make sure to <a href="http://twitter.com/ionicframework" target="_blank">follow us</a> on Twitter to get important updates and announcements for Ionic developers.
-    </p>
-    <p>
-      <b>Psst!</b> - Try <a href="http://view.ionic.io/">Ionic View</a> to easily share and test your app with clients and co-workers.
-    </p>
+    <div class = "card" ng-repeat="item in games">
+      <div class = "item">
+        {{item.host }} VS {{item.guest}}
+      </div>
+
+      <div class = "row">
+        <div class = "col col-25"></div>
+        <div class = "col col-25">主</div>
+        <div class = "col col-25">盘口</div>
+        <div class = "col col-25">客</div>
+      </div>
+
+      <div class = "row">
+        <div class = "col col-25">初盘</div>
+        <div class = "col col-25">{{item.startHost}}</div>
+        <div class = "col col-25">{{item.startPanko}}</div>
+        <div class = "col col-25">{{item.startGuest}}</div>
+      </div>
+      <div class = "row">
+        <div class = "col col-25">即时</div>
+        <div class = "col col-25">{{item.nowHost}}</div>
+        <div class = "col col-25">{{item.nowPanko}}</div>
+        <div class = "col col-25">{{item.nowGuest}}</div>
+      </div>
+      <div class = "row">
+        <div class = "col col-25">终盘</div>
+        <div class = "col col-25">{{item.endHost}}</div>
+        <div class = "col col-25">{{item.endPanko}}</div>
+        <div class = "col col-25">{{item.endGuest}}</div>
+      </div>
+      <div class = "row">
+        <div class = "col col-25">欧亚</div>
+        <div class = "col col-25">{{item.euroAsiaHost}}</div>
+        <div class = "col col-25">{{item.euroAsiaPanko}}</div>
+        <div class = "col col-25">{{item.euroAsiaGuest}}</div>
+      </div>
+    </div>
+
+
   </ion-content>
 </ion-view>

@@ -9,9 +9,11 @@
         <span class="input-label">初盘主最大</span>
         <input type="text" name="startHostTo"  ng-model="data.startHostTo">
       </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">盘口</span>
-        <input type="text" name="startPanko"  ng-model="data.startPanko">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.startPanko" ng-options="v.id as v.name for v in positionList"></select>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">初盘客最小</span>
@@ -31,9 +33,11 @@
         <span class="input-label">即时盘主最大</span>
         <input type="text" name="nowHostTo"  ng-model="data.nowHostTo">
       </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">盘口</span>
-        <input type="text" name="nowPanko"  ng-model="data.nowPanko">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.nowPanko" ng-options="v.id as v.name for v in positionList"></select>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">即时盘客最小</span>
@@ -53,9 +57,11 @@
         <span class="input-label">终盘主最大</span>
         <input type="text" name="endHostTo"  ng-model="data.endHostTo">
       </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">盘口</span>
-        <input type="text" name="endPanko"  ng-model="data.endPanko">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.endPanko" ng-options="v.id as v.name for v in positionList"></select>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">终盘客最小</span>
@@ -75,9 +81,11 @@
         <span class="input-label">欧亚主最大</span>
         <input type="text" name="euroAsiaHostTo"  ng-model="data.euroAsiaHostTo">
       </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">盘口</span>
-        <input type="text" name="euroAsiaPanko"  ng-model="data.euroAsiaPanko">
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.euroAsiaPanko" ng-options="v.id as v.name for v in positionList"></select>
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">欧亚客最小</span>
