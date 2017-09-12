@@ -1,4 +1,9 @@
 <ion-view view-title="筛选结果">
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="refresh()">
+      刷新
+    </button>
+  </ion-nav-buttons>
   <ion-content class="padding">
     <div class = "card" ng-repeat="item in games">
       <div class = "item">

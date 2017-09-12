@@ -5,158 +5,165 @@ angular.module('starter.controllers', ["starter.services"])
      $scope.search ={};
      filterFactory.getFilters().then(function(data) {
          $scope.filter = data;
-         var now = new Date();
-         var date = formatDate(now);
-         if($scope.filter.startHostFrom != "")
-             $scope.temp = '';
-         jsonStr = '{';
-         jsonStr +=   '"date" : '
-         jsonStr +=      '"'+ date + '"'
-         //start
-          if($scope.filter.startHostFrom != "" && $scope.filter.startHostTo != "")
-              jsonStr += ',"details.startHost": { "$gte": "' + $scope.filter.startHostFrom + '" , "$lte": "' + $scope.filter.startHostTo + '" }'
-          else if($scope.filter.startHostFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.startHost": { "$gte":  "' + $scope.filter.startHostFrom + '" }';
-            }
-          else if($scope.filter.startHostTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.startHost": { "$lte":  "' + $scope.filter.startHostTo + '" }';
-          }
-
-          if($scope.filter.startPanko !="")
-          {
-              jsonStr += ', "details.startPanko":"' + $scope.filter.startPanko + '"';
-          }
-
-
-          if($scope.filter.startGuestFrom != "" && $scope.filter.startGuestTo != "")
-              jsonStr += ',"details.startGuest": { "$gte": "' + $scope.filter.startGuestFrom + '" , "$lte": "' + $scope.filter.startGuestTo + '" }'
-          else if($scope.filter.startGuestFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.startGuest": { "$gte":  "' + $scope.filter.startGuestFrom + '" }';
-            }
-          else if($scope.filter.startGuestTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.startGuest": { "$lte":  "' + $scope.filter.startGuestTo + '" }';
-          }
-
-          //end
-          if($scope.filter.endHostFrom != "" && $scope.filter.endHostTo != "")
-              jsonStr += ',"details.endHost": { "$gte": "' + $scope.filter.endHostFrom + '" , "$lte": "' + $scope.filter.endHostTo + '" }'
-          else if($scope.filter.endHostFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.endHost": { "$gte":  "' + $scope.filter.endHostFrom + '" }';
-            }
-          else if($scope.filter.endHostTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.endHost": { "$lte":  "' + $scope.filter.endHostTo + '" }';
-          }
-
-          if($scope.filter.endPanko !="")
-          {
-              jsonStr += ', "details.endPanko":"' + $scope.filter.endPanko + '"';
-          }
-
-
-          if($scope.filter.endGuestFrom != "" && $scope.filter.endGuestTo != "")
-              jsonStr += ',"details.endGuest": { "$gte": "' + $scope.filter.endGuestFrom + '" , "$lte": "' + $scope.filter.endGuestTo + '" }'
-          else if($scope.filter.endGuestFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.endGuest": { "$gte":  "' + $scope.filter.endGuestFrom + '" }';
-            }
-          else if($scope.filter.endGuestTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.endGuest": { "$lte":  "' + $scope.filter.endGuestTo + '" }';
-          }
-
-          //now
-          if($scope.filter.nowHostFrom != "" && $scope.filter.nowHostTo != "")
-              jsonStr += ',"details.nowHost": { "$gte": "' + $scope.filter.nowHostFrom + '" , "$lte": "' + $scope.filter.nowHostTo + '" }'
-          else if($scope.filter.nowHostFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.nowHost": { "$gte":  "' + $scope.filter.nowHostFrom + '" }';
-            }
-          else if($scope.filter.nowHostTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.nowHost": { "$lte":  "' + $scope.filter.nowHostTo + '" }';
-          }
-
-          if($scope.filter.nowPanko !="")
-          {
-              jsonStr += ', "details.nowPanko":"' + $scope.filter.nowPanko + '"';
-          }
-
-
-          if($scope.filter.nowGuestFrom != "" && $scope.filter.nowGuestTo != "")
-              jsonStr += ',"details.nowGuest": { "$gte": "' + $scope.filter.nowGuestFrom + '" , "$lte": "' + $scope.filter.nowGuestTo + '" }'
-          else if($scope.filter.nowGuestFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.nowGuest": { "$gte":  "' + $scope.filter.nowGuestFrom + '" }';
-            }
-          else if($scope.filter.nowGuestTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.nowGuest": { "$lte":  "' + $scope.filter.nowGuestTo + '" }';
-          }
-
-          //EuroAsia
-          if($scope.filter.euroAsiaHostFrom != "" && $scope.filter.euroAsiaHostTo != "")
-              jsonStr += ',"details.euroAsiaHost": { "$gte": "' + $scope.filter.euroAsiaHostFrom + '" , "$lte": "' + $scope.filter.euroAsiaHostTo + '" }'
-          else if($scope.filter.euroAsiaHostFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.euroAsiaHost": { "$gte":  "' + $scope.filter.euroAsiaHostFrom + '" }';
-            }
-          else if($scope.filter.euroAsiaHostTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.euroAsiaHost": { "$lte":  "' + $scope.filter.euroAsiaHostTo + '" }';
-          }
-
-          if($scope.filter.euroAsiaPanko !="")
-          {
-              jsonStr += ', "details.euroAsiaPanko":"' + $scope.filter.euroAsiaPanko + '"';
-          }
-
-
-          if($scope.filter.euroAsiaGuestFrom != "" && $scope.filter.euroAsiaGuestTo != "")
-              jsonStr += ',"details.euroAsiaGuest": { "$gte": "' + $scope.filter.euroAsiaGuestFrom + '" , "$lte": "' + $scope.filter.euroAsiaGuestTo + '" }'
-          else if($scope.filter.euroAsiaGuestFrom != "")
-            {
-              jsonStr += ','
-              jsonStr += '"details.euroAsiaGuest": { "$gte":  "' + $scope.filter.euroAsiaGuestFrom + '" }';
-            }
-          else if($scope.filter.euroAsiaGuestTo != "")
-          {
-              jsonStr += ','
-              jsonStr += '"details.euroAsiaGuest": { "$lte":  "' + $scope.filter.euroAsiaGuestTo + '" }';
-          }
-
-
-          jsonStr += '}';
-      $http({
-              method: 'POST',
-              url: 'http://112.74.57.41:8080/api/games/search',
-              data: jsonStr
-            }).then(function successCallback(response) {
-                 $scope.games = response.data;
-              }, function errorCallback(response) {
-                console.log(response.data);
-            });
-
+               $scope.refresh();
       });
+
+
+
+
+      $scope.refresh = function(){
+               var now = new Date();
+               var date = formatDate(now);
+               if($scope.filter.startHostFrom != "")
+                   $scope.temp = '';
+               jsonStr = '{';
+               jsonStr +=   '"date" : '
+               jsonStr +=      '"'+ date + '"'
+               //start
+                if($scope.filter.startHostFrom != "" && $scope.filter.startHostTo != "")
+                    jsonStr += ',"details.startHost": { "$gte": "' + $scope.filter.startHostFrom + '" , "$lte": "' + $scope.filter.startHostTo + '" }'
+                else if($scope.filter.startHostFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.startHost": { "$gte":  "' + $scope.filter.startHostFrom + '" }';
+                  }
+                else if($scope.filter.startHostTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.startHost": { "$lte":  "' + $scope.filter.startHostTo + '" }';
+                }
+
+                if($scope.filter.startPanko !="")
+                {
+                    jsonStr += ', "details.startPanko":"' + $scope.filter.startPanko + '"';
+                }
+
+
+                if($scope.filter.startGuestFrom != "" && $scope.filter.startGuestTo != "")
+                    jsonStr += ',"details.startGuest": { "$gte": "' + $scope.filter.startGuestFrom + '" , "$lte": "' + $scope.filter.startGuestTo + '" }'
+                else if($scope.filter.startGuestFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.startGuest": { "$gte":  "' + $scope.filter.startGuestFrom + '" }';
+                  }
+                else if($scope.filter.startGuestTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.startGuest": { "$lte":  "' + $scope.filter.startGuestTo + '" }';
+                }
+
+                //end
+                if($scope.filter.endHostFrom != "" && $scope.filter.endHostTo != "")
+                    jsonStr += ',"details.endHost": { "$gte": "' + $scope.filter.endHostFrom + '" , "$lte": "' + $scope.filter.endHostTo + '" }'
+                else if($scope.filter.endHostFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.endHost": { "$gte":  "' + $scope.filter.endHostFrom + '" }';
+                  }
+                else if($scope.filter.endHostTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.endHost": { "$lte":  "' + $scope.filter.endHostTo + '" }';
+                }
+
+                if($scope.filter.endPanko !="")
+                {
+                    jsonStr += ', "details.endPanko":"' + $scope.filter.endPanko + '"';
+                }
+
+
+                if($scope.filter.endGuestFrom != "" && $scope.filter.endGuestTo != "")
+                    jsonStr += ',"details.endGuest": { "$gte": "' + $scope.filter.endGuestFrom + '" , "$lte": "' + $scope.filter.endGuestTo + '" }'
+                else if($scope.filter.endGuestFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.endGuest": { "$gte":  "' + $scope.filter.endGuestFrom + '" }';
+                  }
+                else if($scope.filter.endGuestTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.endGuest": { "$lte":  "' + $scope.filter.endGuestTo + '" }';
+                }
+
+                //now
+                if($scope.filter.nowHostFrom != "" && $scope.filter.nowHostTo != "")
+                    jsonStr += ',"details.nowHost": { "$gte": "' + $scope.filter.nowHostFrom + '" , "$lte": "' + $scope.filter.nowHostTo + '" }'
+                else if($scope.filter.nowHostFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.nowHost": { "$gte":  "' + $scope.filter.nowHostFrom + '" }';
+                  }
+                else if($scope.filter.nowHostTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.nowHost": { "$lte":  "' + $scope.filter.nowHostTo + '" }';
+                }
+
+                if($scope.filter.nowPanko !="")
+                {
+                    jsonStr += ', "details.nowPanko":"' + $scope.filter.nowPanko + '"';
+                }
+
+
+                if($scope.filter.nowGuestFrom != "" && $scope.filter.nowGuestTo != "")
+                    jsonStr += ',"details.nowGuest": { "$gte": "' + $scope.filter.nowGuestFrom + '" , "$lte": "' + $scope.filter.nowGuestTo + '" }'
+                else if($scope.filter.nowGuestFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.nowGuest": { "$gte":  "' + $scope.filter.nowGuestFrom + '" }';
+                  }
+                else if($scope.filter.nowGuestTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.nowGuest": { "$lte":  "' + $scope.filter.nowGuestTo + '" }';
+                }
+
+                //EuroAsia
+                if($scope.filter.euroAsiaHostFrom != "" && $scope.filter.euroAsiaHostTo != "")
+                    jsonStr += ',"details.euroAsiaHost": { "$gte": "' + $scope.filter.euroAsiaHostFrom + '" , "$lte": "' + $scope.filter.euroAsiaHostTo + '" }'
+                else if($scope.filter.euroAsiaHostFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.euroAsiaHost": { "$gte":  "' + $scope.filter.euroAsiaHostFrom + '" }';
+                  }
+                else if($scope.filter.euroAsiaHostTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.euroAsiaHost": { "$lte":  "' + $scope.filter.euroAsiaHostTo + '" }';
+                }
+
+                if($scope.filter.euroAsiaPanko !="")
+                {
+                    jsonStr += ', "details.euroAsiaPanko":"' + $scope.filter.euroAsiaPanko + '"';
+                }
+
+
+                if($scope.filter.euroAsiaGuestFrom != "" && $scope.filter.euroAsiaGuestTo != "")
+                    jsonStr += ',"details.euroAsiaGuest": { "$gte": "' + $scope.filter.euroAsiaGuestFrom + '" , "$lte": "' + $scope.filter.euroAsiaGuestTo + '" }'
+                else if($scope.filter.euroAsiaGuestFrom != "")
+                  {
+                    jsonStr += ','
+                    jsonStr += '"details.euroAsiaGuest": { "$gte":  "' + $scope.filter.euroAsiaGuestFrom + '" }';
+                  }
+                else if($scope.filter.euroAsiaGuestTo != "")
+                {
+                    jsonStr += ','
+                    jsonStr += '"details.euroAsiaGuest": { "$lte":  "' + $scope.filter.euroAsiaGuestTo + '" }';
+                }
+
+
+                jsonStr += '}';
+            $http({
+                    method: 'POST',
+                    url: 'http://112.74.57.41:8080/api/games/search',
+                    data: jsonStr
+                  }).then(function successCallback(response) {
+                       $scope.games = response.data;
+                    }, function errorCallback(response) {
+                      console.log(response.data);
+                  });
+
+      }
 
 
 
