@@ -11,7 +11,7 @@ angular.module('starter.controllers', ["starter.services"])
              $scope.temp = '';
          jsonStr = '{';
          jsonStr +=   '"date" : '
-         jsonStr +=      '"2017-09-11"'
+         jsonStr +=      '"'+ date + '"'
          //start
           if($scope.filter.startHostFrom != "" && $scope.filter.startHostTo != "")
               jsonStr += ',"details.startHost": { "$gte": "' + $scope.filter.startHostFrom + '" , "$lte": "' + $scope.filter.startHostTo + '" }'
@@ -148,7 +148,7 @@ angular.module('starter.controllers', ["starter.services"])
           jsonStr += '}';
       $http({
               method: 'POST',
-              url: 'http://192.168.2.58:8080/api/games/search',
+              url: 'http://112.74.57.41:8080/api/games/search',
               data: jsonStr
             }).then(function successCallback(response) {
                  $scope.games = response.data;
