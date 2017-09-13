@@ -22,4 +22,3 @@ var AsiaSchema   = new Schema({
 
 module.exports = mongoose.model('Asia', AsiaSchema);
 
-
