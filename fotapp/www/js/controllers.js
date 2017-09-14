@@ -9,10 +9,8 @@ angular.module('starter.controllers', ["starter.services"])
       });
 
 
-
-
       $scope.refresh = function(){
-               var now = new Date("2017-09-14");
+               var now = new Date();
                var date = formatDate(now);
                if($scope.filter.startHostFrom != "")
                    $scope.temp = '';
