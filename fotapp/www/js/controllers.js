@@ -12,7 +12,7 @@ angular.module('starter.controllers', ["starter.services"])
 
 
       $scope.refresh = function(){
-               var now = new Date();
+               var now = new Date("2017-09-14");
                var date = formatDate(now);
                if($scope.filter.startHostFrom != "")
                    $scope.temp = '';
@@ -159,6 +159,7 @@ angular.module('starter.controllers', ["starter.services"])
                     data: jsonStr
                   }).then(function successCallback(response) {
                        $scope.games = response.data;
+                       $scope.$broadcast('scroll.refreshComplete');
                     }, function errorCallback(response) {
                       console.log(response.data);
                   });

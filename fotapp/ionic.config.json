@@ -1,4 +1,11 @@
 {
   "name": "fotapp",
-  "app_id": ""
+  "app_id": "",
+  "integrations": {
+    "gulp": {}
+  },
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*"
+  ]
 }

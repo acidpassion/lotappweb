@@ -1,6 +1,6 @@
 class Game:
 
-   def __init__(self, date, type, time, time_elapsed, host, guest, index1, pankou, index2, id):
+   def __init__(self, date, type, time, time_elapsed, host, guest, index1, pankou, index2, id, fullname):
       self.date = date
       self.type = type
       self.time = time
@@ -11,4 +11,5 @@ class Game:
       self.pankou = pankou
       self.index2 = index2
       self.id = id
+      self.fullname = fullname
 
