@@ -191,6 +191,7 @@ router.route('/games/search')
                     "fullname": {
                         "$concat": ["$type", " ", "$date", " ", "$time", " ", "$host", " VS ", "$guest"]
                     },
+                    "company":"$details.company",
                     "startHost": "$details.startHost",
                     "startPanko": "$details.startPanko",
                     "startGuest": "$details.startGuest",
