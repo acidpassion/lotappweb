@@ -221,6 +221,7 @@ router.route('/games/search')
             if (err) {
                 next(err);
             } else {
+
                 res.json(result);
             }
         });

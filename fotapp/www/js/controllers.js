@@ -1,15 +1,15 @@
 angular.module('starter.controllers', ["starter.services"])
 
-.controller('DashCtrl', function($scope, filterFactory, $http, API_ENDPOINT ) {
+.controller('DashCtrl', function($scope, filterFactory, $http, API_ENDPOINT) {
      $scope.filter ={};
      $scope.search ={};
      filterFactory.getFilters().then(function(data) {
          $scope.filter = data;
                $scope.refresh();
-      });
-
+      })
 
       $scope.refresh = function(){
+
                var now = new Date();
                var date = formatDate(now);
                if($scope.filter.startHostFrom != "")
@@ -162,10 +162,8 @@ angular.module('starter.controllers', ["starter.services"])
                       console.log(response.data);
                   });
 
+
       }
-
-
-
       function formatDate(date) {
           var d = new Date(date),
               month = '' + (d.getMonth() + 1),
@@ -181,20 +179,33 @@ angular.module('starter.controllers', ["starter.services"])
 
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+.controller('notificationCtrl', function ($scope, $rootScope, $cordovaLocalNotification) {
+        $scope.addNotification = function () {
+          var now = new Date().getTime();
+          var _60_seconds_from_now = new Date(now + 30 * 1000);
+          var event = {
+            id: 1,
+            at: _60_seconds_from_now,
+            title: "Test Event",
+            text: "this is a message about the event"
+          };
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+          document.addEventListener("deviceready", function () {
+            $cordovaLocalNotification.schedule(event).then(function () {
+              console.log("local add : success");
+            });
+
+          }, false);
+
+        };
+
+        document.addEventListener("deviceready", function () {
+          $rootScope.$on("$cordovaLocalNotification:trigger", function (event, notification, state) {
+            console.log("notification id:" + notification.id + " state: " + state);
+          });
+        }, false);
 })
+
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
@@ -231,7 +242,7 @@ angular.module('starter.controllers', ["starter.services"])
     $scope.show();
      $http({
           method: 'PUT',
-          url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59aacc5a1aeb20026da68700',
+          url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59c267830613370db00e40ca',
           data: $scope.data,
           headers: {'Content-Type': 'application/json'}
       })
