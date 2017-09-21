@@ -182,10 +182,10 @@ angular.module('starter.controllers', ["starter.services"])
 .controller('notificationCtrl', function ($scope, $rootScope, $cordovaLocalNotification) {
         $scope.addNotification = function () {
           var now = new Date().getTime();
-          var _60_seconds_from_now = new Date(now + 30 * 1000);
+          var _5_seconds_from_now = new Date(now + 5 * 1000);
           var event = {
             id: 1,
-            at: _60_seconds_from_now,
+            at: _5_seconds_from_now,
             title: "Test Event",
             text: "this is a message about the event"
           };
