@@ -1,0 +1,107 @@
+<ion-view view-title="设置">
+  <ion-content padding="true">
+    <form ng-submit="submit()">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">初盘主最小</span>
+        <input type="text" name="startHostFrom"  ng-model="data.startHostFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">初盘主最大</span>
+        <input type="text" name="startHostTo"  ng-model="data.startHostTo">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.startPanko" ng-options="v.id as v.name for v in positionList"></select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">初盘客最小</span>
+        <input type="text" name="startGuestFrom"  ng-model="data.startGuestFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">初盘客最大</span>
+        <input type="text" name="startGuestTo"  ng-model="data.startGuestTo">
+      </label>
+
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">即时盘主最小</span>
+        <input type="text" name="nowHostFrom"  ng-model="data.nowHostFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">即时盘主最大</span>
+        <input type="text" name="nowHostTo"  ng-model="data.nowHostTo">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.nowPanko" ng-options="v.id as v.name for v in positionList"></select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">即时盘客最小</span>
+        <input type="text" name="nowGuestFrom"  ng-model="data.nowGuestFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">即时盘客最大</span>
+        <input type="text" name="nowGuestTo"  ng-model="data.nowGuestTo">
+      </label>
+
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">终盘主最小</span>
+        <input type="text" name="endHostFrom"  ng-model="data.endHostFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">终盘主最大</span>
+        <input type="text" name="endHostTo"  ng-model="data.endHostTo">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.endPanko" ng-options="v.id as v.name for v in positionList"></select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">终盘客最小</span>
+        <input type="text" name="endGuestFrom"  ng-model="data.endGuestFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">终盘客最大</span>
+        <input type="text" name="endGuestTo"  ng-model="data.endGuestTo">
+      </label>
+
+
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">欧亚主最小</span>
+        <input type="text" name="euroAsiaHostFrom"  ng-model="data.euroAsiaHostFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">欧亚主最大</span>
+        <input type="text" name="euroAsiaHostTo"  ng-model="data.euroAsiaHostTo">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          盘口
+        </div>
+        <select ng-model="data.euroAsiaPanko" ng-options="v.id as v.name for v in positionList"></select>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">欧亚客最小</span>
+        <input type="text" name="euroAsiaGuestFrom"  ng-model="data.euroAsiaGuestFrom">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">欧亚客最大</span>
+        <input type="text" name="euroAsiaGuestTo"  ng-model="data.euroAsiaGuestTo">
+      </label>
+
+
+
+      <input class="button button-block button-positive" type="submit" name="submit" value="保   存">
+    </form>
+  </ion-content>
+</ion-view>
+
+
+

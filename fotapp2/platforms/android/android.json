@@ -83,25 +83,25 @@
     },
     "installed_plugins": {
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.yeplink.app"
         },
         "cordova-plugin-app-event": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.yeplink.app"
         },
         "de.appplant.cordova.plugin.local-notification": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.yeplink.app"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.yeplink.app"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.yeplink.app"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.yeplink.app"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.ionic.starter"
+            "PACKAGE_NAME": "io.yeplink.app"
         }
     },
     "dependent_plugins": {},

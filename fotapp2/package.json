@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "cordova-android": "^6.2.3",
+        "cordova-ios": "^4.4.0",
         "cordova-plugin-app-event": "file:node_modules/cordova-plugin-app-event",
         "cordova-plugin-device": "1.1.4",
         "cordova-plugin-splashscreen": "^4.0.3",
@@ -28,7 +29,8 @@
             "ionic-plugin-keyboard": {}
         },
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ]
     }
 }

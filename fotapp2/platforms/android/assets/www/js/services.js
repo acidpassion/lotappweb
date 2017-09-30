@@ -13,7 +13,7 @@ angular.module('starter.services', [])
         function getFilters() {
             var defer = $q.defer();
 
-            $http.get(API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59c267830613370db00e40ca').success(function (data) {
+            $http.get(API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59c6828ebb20d4045439ac55').success(function (data) {
                 defer.resolve(data);
             }).error(function (data, status) {
                 defer.reject(data);
