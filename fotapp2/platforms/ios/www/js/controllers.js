@@ -1,23 +1,16 @@
 angular.module('starter.controllers', ["starter.services"])
 
-.controller('DashCtrl', function($scope, filterFactory, $http, API_ENDPOINT, $cordovaLocalNotification, $ionicPlatform, $interval, $ionicLoading, $ionicPopup) {
+.controller('DashCtrl', function($scope, filterFactory, $http, API_ENDPOINT, $cordovaLocalNotification, $ionicPlatform, $interval, $ionicLoading, $ionicPopup,) {
     $ionicPlatform.ready(function() {
-
-        $scope.scheduleInstantNotification = function(games) {
-            $cordovaLocalNotification.schedule({
-                id: 1,
-                text: '共有 ' + games + ' 场比赛符合筛选条件' ,
-                title: '凌子，有料到...点击查看'
-            }).then(function() {
-                var alertPopup = $ionicPopup.alert({
-                   title: '提示',
-                   template: '共有 ' + games + ' 场比赛符合筛选条件'
-                });
-                alertPopup.then(function(res) {
-                   console.log(res);
-                });
-            });;
-        };
+          $scope.scheduleInstantNotification = function(games) {
+              $cordovaLocalNotification.schedule({
+                  id: 1,
+                  text: '共有 ' + games + ' 场比赛符合筛选条件' ,
+                  title: '凌子，有料到...点击查看'
+              }).then(function() {
+                    console.log('共有 ' + games + ' 场比赛符合筛选条件');
+              });;
+          };
     });
     $scope.filter = {};
     $scope.search = {};
@@ -26,7 +19,7 @@ angular.module('starter.controllers', ["starter.services"])
         reloadNumber++;
         console.log('refreshed No. of times: ', reloadNumber)
         $scope.refresh();
-    }, 60000);
+    }, 600000);
 
     $scope.refresh = function() {
         $ionicLoading.show({
@@ -153,7 +146,10 @@ angular.module('starter.controllers', ["starter.services"])
                 data: jsonStr
             }).then(function successCallback(response) {
                 if ($scope.games != response.data) {
-                    $scope.scheduleInstantNotification(response.data.length);
+                          $scope.scheduleInstantNotification(response.data.length);
+//                    if(ionic.Platform.isAndroid() || ionic.Platform.isIOS() || ionic.Platform.isIPad()){
+//                        $scope.scheduleInstantNotification(response.data.length);
+//                    }
                     $scope.games = response.data;
                     $ionicLoading.hide();
                 }
@@ -267,7 +263,7 @@ angular.module('starter.controllers', ["starter.services"])
         $scope.show();
         $http({
             method: 'PUT',
-            url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59c6828ebb20d4045439ac55',
+            url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59d708e17d2c4e098cc7fafe',
             data: $scope.data,
             headers: {
                 'Content-Type': 'application/json'

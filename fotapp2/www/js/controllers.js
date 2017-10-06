@@ -146,9 +146,10 @@ angular.module('starter.controllers', ["starter.services"])
                 data: jsonStr
             }).then(function successCallback(response) {
                 if ($scope.games != response.data) {
-                    if(ionic.Platform.isAndroid() || ionic.Platform.isIOS() || ionic.Platform.isIPad()){
-                        $scope.scheduleInstantNotification(response.data.length);
-                    }
+                          $scope.scheduleInstantNotification(response.data.length);
+//                    if(ionic.Platform.isAndroid() || ionic.Platform.isIOS() || ionic.Platform.isIPad()){
+//                        $scope.scheduleInstantNotification(response.data.length);
+//                    }
                     $scope.games = response.data;
                     $ionicLoading.hide();
                 }
@@ -160,7 +161,7 @@ angular.module('starter.controllers', ["starter.services"])
             });
         })
     }
-//    $scope.refresh();
+    $scope.refresh();
     function formatDate(date) {
         var d = new Date(date),
             month = '' + (d.getMonth() + 1),
@@ -262,7 +263,7 @@ angular.module('starter.controllers', ["starter.services"])
         $scope.show();
         $http({
             method: 'PUT',
-            url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59c6828ebb20d4045439ac55',
+            url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59d708e17d2c4e098cc7fafe',
             data: $scope.data,
             headers: {
                 'Content-Type': 'application/json'
