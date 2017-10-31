@@ -146,8 +146,7 @@ angular.module('starter.controllers', ["starter.services"])
                 data: jsonStr
             }).then(function successCallback(response) {
                 if ($scope.games != response.data) {
-                  alert(document.URL.startsWith('http'));
-                    if(ionic.Platform.platform() != 'win32' && ionic.Platform.platform() != 'macintel'){
+                    if(!document.URL.startsWith('http')){
                         $scope.scheduleInstantNotification(response.data.length);
                     }
                     $scope.games = response.data;

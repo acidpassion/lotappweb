@@ -1,3 +1,5 @@
 selenium
 pymongo
 BeautifulSoup
+flask-cors
+json

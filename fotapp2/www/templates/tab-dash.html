@@ -3,94 +3,56 @@
     <ion-refresher on-refresh="refresh()" pulling-text="拉我刷新......" refreshing-text="数据读取中......"
                    refreshing-icon="ion-loading-c">
     </ion-refresher>
-    <!--<table class="pure-table pure-table-bordered" style="width:100%">-->
-      <!--<tbody>-->
-      <!--<thead>-->
-        <!--<td colspan="5"><span>芬超</span>&nbsp;<span>09-27 23:30</span>&nbsp;赫尔辛基&nbsp;VS&nbsp;玛丽港-->
-        <!--</td>-->
-        <!--</thead>-->
-      <!--<tr>-->
-        <!--<td>公司</td>-->
-        <!--<td style="text-align: center">&nbsp;</td>-->
-        <!--<td style="text-align: center">主队</td>-->
-        <!--<td style="text-align: center">盘口</td>-->
-        <!--<td style="text-align: center">客队</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td rowspan="2" style="color: #36c; text-align: center;">澳彩</td>-->
-        <!--<td>初盘</td>-->
-        <!--<td style="text-align: center;">0.90</td>-->
-        <!--<td style="text-align: center;">1.5</td>-->
-        <!--<td style="text-align: center;">0.90</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>即盘</td>-->
-        <!--<td style="text-align: center;">0.90</td>-->
-        <!--<td style="text-align: center;">1.5</td>-->
-        <!--<td style="text-align: center;">0.90</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td rowspan="2" style="color: #36c; text-align: center;">SB</td>-->
-        <!--<td>初盘</td>-->
-        <!--<td style="text-align: center;">0.98</td>-->
-        <!--<td style="text-align: center;">1.5</td>-->
-        <!--<td style="text-align: center;">0.90</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>即盘</td>-->
-        <!--<td style="text-align: center;">0.93</td>-->
-        <!--<td style="text-align: center;">1.5</td>-->
-        <!--<td style="text-align: center;">0.97</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td rowspan="2" style="color: #36c; text-align: center;">Bet365</td>-->
-        <!--<td>初盘</td>-->
-        <!--<td style="text-align: center;">0.78</td>-->
-        <!--<td style="text-align: center;">1/1.5</td>-->
-        <!--<td style="text-align: center;">1.10</td>-->
-      <!--</tr>-->
-      <!--<tr>-->
-        <!--<td>即盘</td>-->
-        <!--<td style="text-align: center;">0.88</td>-->
-        <!--<td style="text-align: center;">1.5</td>-->
-        <!--<td style="text-align: center;">0.98</td>-->
-      <!--</tr>-->
-      <!--</tbody>-->
-    <!--</table>-->
     <div class="input-wrapper" ng-repeat="game in games">
-      <li class="item item-divider">{{game._id}}</li>
-      <div ng-repeat="item in game.details">
-        <li class="item item-divider">{{item.company}}</li>
-        <div class="row">
-          <div class="col col-25"></div>
-          <div class="col col-25">主</div>
-          <div class="col col-25">盘口</div>
-          <div class="col col-25">客</div>
-        </div>
-        <div class="row">
-          <div class="col col-25">初盘</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.startHost >= 1}}}">{{item.startHost}}</p></div>
-          <div class="col col-25">{{item.startPanko}}</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.startGuest >= 1}}}">{{item.startGuest}}</p></div>
-        </div>
-        <div class="row">
-          <div class="col col-25">即时</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.nowHost >= 1}}}">{{item.nowHost}}</p></div>
-          <div class="col col-25">{{item.nowPanko}}</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.nowGuest >= 1}}}">{{item.nowGuest}}</p></div>
-        </div>
-        <div class="row">
-          <div class="col col-25">终盘</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.endHost >= 1}}}">{{item.endHost}}</p></div>
-          <div class="col col-25">{{item.endPanko}}</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.endGuest >= 1}}}">{{item.endGuest}}</p></div>
-        </div>
-        <div class="row">
-          <div class="col col-25">欧亚</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.euroAsiaHost >= 1}}}">{{item.euroAsiaHost}}</p></div>
-          <div class="col col-25">{{item.euroAsiaPanko}}</div>
-          <div class="col col-25"><p ng-class="{balanced:{{item.euroAsiaGuest >= 1}}}">{{item.euroAsiaGuest}}</p></div>
-        </div>
+      <!--<li class="item item-divider">{{game._id}}</li>-->
+      <div>
+        <table style="width:100%" ng-repeat="game in games">
+          <thead>
+          <tr>
+            <th colspan="2" style="text-align: center;background: #5a8ee1">{{game._id}}</th>
+            <!--<th>Make</th>-->
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr ng-repeat="item in game.details">
+            <td>{{item.company}}</td>
+            <td>
+              <div class="row">
+                <div class="col col-25"></div>
+                <div class="col col-25">主</div>
+                <div class="col col-25">盘口</div>
+                <div class="col col-25">客</div>
+              </div>
+              <div class="row">
+                <div class="col col-25">初盘</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.startHost >= 1}}}">{{item.startHost}}</p></div>
+                <div class="col col-25">{{item.startPanko}}</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.startGuest >= 1}}}">{{item.startGuest}}</p></div>
+              </div>
+              <div class="row">
+                <div class="col col-25">即时</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.nowHost >= 1}}}">{{item.nowHost}}</p></div>
+                <div class="col col-25">{{item.nowPanko}}</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.nowGuest >= 1}}}">{{item.nowGuest}}</p></div>
+              </div>
+              <div class="row">
+                <div class="col col-25">终盘</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.endHost >= 1}}}">{{item.endHost}}</p></div>
+                <div class="col col-25">{{item.endPanko}}</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.endGuest >= 1}}}">{{item.endGuest}}</p></div>
+              </div>
+              <div class="row">
+                <div class="col col-25">欧亚</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.euroAsiaHost >= 1}}}">{{item.euroAsiaHost}}</p></div>
+                <div class="col col-25">{{item.euroAsiaPanko}}</div>
+                <div class="col col-25"><p ng-class="{balanced:{{item.euroAsiaGuest >= 1}}}">{{item.euroAsiaGuest}}</p></div>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
       </div>
 
     </div>
