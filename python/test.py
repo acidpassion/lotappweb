@@ -78,8 +78,8 @@ def init_phantomjs_driver_caps(*args, **kwargs):
 
 client = pymongo.MongoClient("localhost", 27017)
 db = client.lotapp
-# db.games.delete_many({})
-# db.asias.delete_many({})
+db.games.delete_many({})
+db.asias.delete_many({})
 
 # caps["phantomjs.page.settings.userAgent"] = str(randint(0,1000000))
 os = platform.platform()

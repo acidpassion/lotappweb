@@ -3,50 +3,94 @@
     <ion-refresher on-refresh="refresh()" pulling-text="拉我刷新......" refreshing-text="数据读取中......"
                    refreshing-icon="ion-loading-c">
     </ion-refresher>
+
     <div class="input-wrapper" ng-repeat="game in games">
       <!--<li class="item item-divider">{{game._id}}</li>-->
       <div>
         <table style="width:100%" ng-repeat="game in games">
           <thead>
           <tr>
-            <th colspan="2" style="text-align: center;background: #5a8ee1">{{game._id}}</th>
-            <!--<th>Make</th>-->
+            <th colspan="2" bgcolor="#5a8ee1" style="text-align: left;">{{game._id}}</th>
           </tr>
           </thead>
-
           <tbody>
           <tr ng-repeat="item in game.details">
-            <td>{{item.company}}</td>
+            <td width="300" bgcolor="#ddd" class="rTableHead">
+              {{item.company}}
+            </td>
             <td>
-              <div class="row">
-                <div class="col col-25"></div>
-                <div class="col col-25">主</div>
-                <div class="col col-25">盘口</div>
-                <div class="col col-25">客</div>
-              </div>
-              <div class="row">
-                <div class="col col-25">初盘</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.startHost >= 1}}}">{{item.startHost}}</p></div>
-                <div class="col col-25">{{item.startPanko}}</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.startGuest >= 1}}}">{{item.startGuest}}</p></div>
-              </div>
-              <div class="row">
-                <div class="col col-25">即时</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.nowHost >= 1}}}">{{item.nowHost}}</p></div>
-                <div class="col col-25">{{item.nowPanko}}</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.nowGuest >= 1}}}">{{item.nowGuest}}</p></div>
-              </div>
-              <div class="row">
-                <div class="col col-25">终盘</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.endHost >= 1}}}">{{item.endHost}}</p></div>
-                <div class="col col-25">{{item.endPanko}}</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.endGuest >= 1}}}">{{item.endGuest}}</p></div>
-              </div>
-              <div class="row">
-                <div class="col col-25">欧亚</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.euroAsiaHost >= 1}}}">{{item.euroAsiaHost}}</p></div>
-                <div class="col col-25">{{item.euroAsiaPanko}}</div>
-                <div class="col col-25"><p ng-class="{balanced:{{item.euroAsiaGuest >= 1}}}">{{item.euroAsiaGuest}}</p></div>
+              <div class="rTable">
+                <div class="rTableHeading">
+                  <div class="rTableHead">
+                  </div>
+                  <div class="rTableHead">
+                    主
+                  </div>
+                  <div class="rTableHead">
+                    盘 口
+                  </div>
+                  <div class="rTableHead">
+                    客
+                  </div>
+                </div>
+                <div class="rTableBody">
+                  <div class="rTableRow">
+                    <div class="rTableCell">
+                      初 盘
+                    </div>
+                    <div class="rTableCell">
+                      {{item.startHost}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.startPanko}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.startGuest}}
+                    </div>
+                  </div>
+                  <div class="rTableRow">
+                    <div class="rTableCell">
+                      即 时
+                    </div>
+                    <div class="rTableCell">
+                      {{item.nowHost}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.nowPanko}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.nowGuest}}
+                    </div>
+                  </div>
+                  <div class="rTableRow">
+                    <div class="rTableCell">
+                      终 盘
+                    </div>
+                    <div class="rTableCell">
+                      {{item.endHost}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.endPanko}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.endGuest}}
+                    </div>
+                  </div>
+                  <div class="rTableRow">
+                    <div class="rTableCell">
+                      欧 亚
+                    </div>
+                    <div class="rTableCell">
+                      {{item.euroAsiaHost}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.euroAsiaPanko}}
+                    </div>
+                    <div class="rTableCell">
+                      {{item.euroAsiaGuest}}
+                    </div>
+                  </div>
+                </div>
               </div>
             </td>
           </tr>
