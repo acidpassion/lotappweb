@@ -3,101 +3,48 @@
     <ion-refresher on-refresh="refresh()" pulling-text="拉我刷新......" refreshing-text="数据读取中......"
                    refreshing-icon="ion-loading-c">
     </ion-refresher>
-
     <div class="input-wrapper" ng-repeat="game in games">
       <!--<li class="item item-divider">{{game._id}}</li>-->
-      <div>
-        <table style="width:100%" ng-repeat="game in games">
-          <thead>
+      <table class="tg" ng-repeat="game in games">
+        <tr>
+          <th class="tg-baqh" colspan="5">{{game._id}}</th>
+        </tr>
+        <tr>
+          <td class="tg-yw4l">公司</td>
+          <td class="tg-yw4l"></td>
+          <td class="tg-yw4l">主</td>
+          <td class="tg-yw4l">盘口</td>
+          <td class="tg-yw4l">客</td>
+        </tr>
+        <tbody ng-repeat="item in game.details">
           <tr>
-            <th colspan="2" bgcolor="#5a8ee1" style="text-align: left;">{{game._id}}</th>
+            <td class="tg-baqh" style="color: #36c; text-align: center;" rowspan="4">{{item.company}}</td>
+            <td class="tg-yw4l">初盘</td>
+            <td class="tg-yw4l">{{item.startHost}}</td>
+            <td class="tg-yw4l">{{item.startPanko}}</td>
+            <td class="tg-yw4l">{{item.startGuest}}</td>
           </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="item in game.details">
-            <td width="300" bgcolor="#ddd" class="rTableHead">
-              {{item.company}}
-            </td>
-            <td>
-              <div class="rTable">
-                <div class="rTableHeading">
-                  <div class="rTableHead">
-                  </div>
-                  <div class="rTableHead">
-                    主
-                  </div>
-                  <div class="rTableHead">
-                    盘 口
-                  </div>
-                  <div class="rTableHead">
-                    客
-                  </div>
-                </div>
-                <div class="rTableBody">
-                  <div class="rTableRow">
-                    <div class="rTableCell">
-                      初 盘
-                    </div>
-                    <div class="rTableCell">
-                      {{item.startHost}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.startPanko}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.startGuest}}
-                    </div>
-                  </div>
-                  <div class="rTableRow">
-                    <div class="rTableCell">
-                      即 时
-                    </div>
-                    <div class="rTableCell">
-                      {{item.nowHost}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.nowPanko}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.nowGuest}}
-                    </div>
-                  </div>
-                  <div class="rTableRow">
-                    <div class="rTableCell">
-                      终 盘
-                    </div>
-                    <div class="rTableCell">
-                      {{item.endHost}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.endPanko}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.endGuest}}
-                    </div>
-                  </div>
-                  <div class="rTableRow">
-                    <div class="rTableCell">
-                      欧 亚
-                    </div>
-                    <div class="rTableCell">
-                      {{item.euroAsiaHost}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.euroAsiaPanko}}
-                    </div>
-                    <div class="rTableCell">
-                      {{item.euroAsiaGuest}}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </td>
+          <tr>
+            <td class="tg-yw4l">终盘</td>
+            <td class="tg-yw4l">{{item.endHost}}</td>
+            <td class="tg-yw4l">{{item.endPanko}}</td>
+            <td class="tg-yw4l">{{item.endGuest}}</td>
           </tr>
-          </tbody>
-        </table>
+          <tr>
+            <td class="tg-yw4l">即时</td>
+            <td class="tg-yw4l">{{item.nowHost}}</td>
+            <td class="tg-yw4l">{{item.nowPanko}}</td>
+            <td class="tg-yw4l">{{item.nowGuest}}</td>
+          </tr>
+          <tr>
+            <td class="tg-yw4l">欧亚</td>
+            <td class="tg-yw4l">{{item.euroAsiaHost}}</td>
+            <td class="tg-yw4l">{{item.euroAsiaPanko}}</td>
+            <td class="tg-yw4l">{{item.euroAsiaGuest}}</td>
+          </tr>
+        </tbody>
 
-      </div>
+      </table>
 
     </div>
 
