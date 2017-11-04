@@ -6,10 +6,10 @@
       <!--<li class="item item-divider">{{game._id}}</li>-->
       <table class="tg" ng-repeat="game in games">
         <tr>
-          <th class="tg-q56n" colspan="5">{{game._id}}</th>
+          <th class="tg-jrnw" colspan="5">{{game._id}}</th>
         </tr>
         <tr>
-          <td class="tg-xjrb">公司</td>
+          <td class="tg-xjrb" style="color: #36c; text-align: center;">公司</td>
           <td class="tg-xjrb"></td>
           <td class="tg-xjrb">主</td>
           <td class="tg-xjrb">盘口</td>
@@ -17,7 +17,7 @@
         </tr>
         <tbody ng-repeat="item in game.details">
           <tr>
-            <td class="tg-u9vp" rowspan="4">{{item.company}}</td>
+            <td class="tg-u9vp" rowspan="4" style="color: #36c; text-align: center;">{{item.company}}</td>
             <td class="tg-yw4l">初盘</td>
             <td class="tg-yw4l">{{item.startHost}}</td>
             <td class="tg-yw4l">{{item.startPanko}}</td>
