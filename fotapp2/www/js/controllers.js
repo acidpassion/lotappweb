@@ -262,7 +262,7 @@ angular.module('starter.controllers', ["starter.services"])
         $scope.show();
         $http({
             method: 'PUT',
-            url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/59d708e17d2c4e098cc7fafe',
+            url: API_ENDPOINT.host + ':' + API_ENDPOINT.port + '/api/filters/5a197e12eb255f1350a7365b',
             data: $scope.data,
             headers: {
                 'Content-Type': 'application/json'

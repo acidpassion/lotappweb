@@ -111,8 +111,9 @@ router.route('/filters/:filter_id')
     .get(function(req, res) {
         Filter.findById(req.params.filter_id, function(err, filter) {
             if (err)
-                res.send(err);
-            res.json(filter);
+                res.send("Not found");
+            else
+                res.json(filter);
         });
     })
 
